@@ -1,0 +1,286 @@
+<title>Assistance Samdé</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@700;800&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  /* Page layout : bandeau de marque, une question-réponse par bloc (format assistance), contact mis en avant. */
+  :root {
+    --bg: #FFFFFF;
+    --surface: #F3F4F6;
+    --ink: #111318;
+    --muted: #5F6478;
+    --accent: #4F46E5;
+    --border: #EEF0F4;
+    color-scheme: light;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #11182B;
+      --surface: #182036;
+      --ink: #F2EFE6;
+      --muted: #AEB6D1;
+      --accent: #818CF8;
+      --border: #2B3453;
+      color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #11182B;
+    --surface: #182036;
+    --ink: #F2EFE6;
+    --muted: #AEB6D1;
+    --accent: #818CF8;
+    --border: #2B3453;
+    color-scheme: dark;
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Nunito', system-ui, -apple-system, sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    padding-inline: 20px;
+    padding-block: 32px 64px;
+  }
+  main { max-width: 640px; margin: 0 auto; }
+
+  .brand { display: flex; align-items: center; gap: 12px; margin-bottom: 28px; }
+  .brand-name {
+    font-family: 'Baloo 2', Georgia, sans-serif;
+    font-weight: 800;
+    font-size: 22px;
+    letter-spacing: -0.01em;
+  }
+
+  h1 {
+    font-family: 'Baloo 2', Georgia, sans-serif;
+    font-weight: 700;
+    font-size: clamp(28px, 6vw, 36px);
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+    margin: 0 0 10px;
+    text-wrap: balance;
+  }
+  .lede { font-size: 17px; margin: 0 0 32px; color: var(--ink); }
+
+  .contact-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    padding: 22px;
+    margin-bottom: 40px;
+    display: grid;
+    gap: 14px;
+  }
+  .contact-card h2 {
+    font-family: 'Baloo 2', Georgia, sans-serif;
+    font-size: 19px;
+    font-weight: 700;
+    margin: 0;
+  }
+  .contact-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    flex-wrap: wrap;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 12px 16px;
+  }
+  .contact-row span { font-weight: 600; }
+  .contact-row button {
+    font: inherit;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--accent);
+    background: transparent;
+    border: 1px solid var(--accent);
+    border-radius: 999px;
+    padding: 6px 14px;
+    cursor: pointer;
+  }
+  .contact-row button:hover { opacity: 0.85; }
+  .contact-card ul {
+    margin: 0;
+    padding-left: 20px;
+    color: var(--muted);
+    font-size: 14px;
+    display: grid;
+    gap: 4px;
+  }
+  .contact-card .note {
+    font-size: 13px;
+    color: var(--muted);
+    margin: 0;
+  }
+
+  h2.section-title {
+    font-family: 'Baloo 2', Georgia, sans-serif;
+    font-weight: 700;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+    margin: 0 0 16px;
+  }
+
+  .faq { display: grid; gap: 4px; margin-bottom: 40px; }
+  details {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 4px 18px;
+  }
+  details + details { margin-top: 8px; }
+  summary {
+    cursor: pointer;
+    list-style: none;
+    padding: 16px 0;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+  }
+  summary::-webkit-details-marker { display: none; }
+  summary .chevron {
+    flex: none;
+    width: 18px; height: 18px;
+    color: var(--accent);
+    transition: transform 0.15s ease;
+  }
+  details[open] summary .chevron { transform: rotate(45deg); }
+  details p { margin: 0 0 16px; color: var(--muted); }
+  summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; border-radius: 8px; }
+
+  .links { display: grid; gap: 10px; margin-bottom: 36px; }
+  .links a {
+    color: var(--ink);
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 14px 16px;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+  }
+  .links a:hover { border-color: var(--accent); }
+  .links a span.label { font-weight: 600; }
+  .links a span.go { color: var(--accent); font-size: 14px; }
+
+  footer {
+    margin-top: 8px;
+    padding-top: 24px;
+    border-top: 1px solid var(--border);
+    font-size: 13px;
+    color: var(--muted);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  footer .by { letter-spacing: 0.08em; }
+</style>
+
+<main>
+  <div class="brand">
+    <svg width="34" height="34" viewBox="0 0 100 100" role="img" aria-label="Samdé">
+      <rect width="100" height="100" rx="24" fill="#4F46E5"/>
+      <path transform="translate(4 10) scale(0.92)" d="M66 33 C64 22 38 21 38 36 C38 51 64 47 64 63 C64 78 36 78 34 66" fill="none" stroke="#FFFFFF" stroke-width="17" stroke-linecap="round" stroke-linejoin="round"/>
+      <rect x="66" y="14" width="7" height="20" rx="3.5" fill="#FFFFFF" transform="rotate(35 69.5 24)"/>
+    </svg>
+    <span class="brand-name">Samdé</span>
+  </div>
+
+  <h1>Assistance</h1>
+  <p class="lede">Samdé est une application par TRILL qui aide les commerçants à noter les crédits et les paiements de leurs clients.</p>
+
+  <div class="contact-card">
+    <h2>Une question, un problème ?</h2>
+    <div class="contact-row">
+      <span>abdoulazizsawadogo222@gmail.com</span>
+      <button type="button" data-copy="abdoulazizsawadogo222@gmail.com">Copier</button>
+    </div>
+    <p class="note">Nous répondons en français. Dites-nous si possible :</p>
+    <ul>
+      <li>le modèle de votre téléphone et sa version d'Android ou d'iOS,</li>
+      <li>ce que vous essayiez de faire,</li>
+      <li>ce qui s'est passé à la place.</li>
+    </ul>
+    <p class="note">Ne nous envoyez jamais votre mot de passe.</p>
+  </div>
+
+  <h2 class="section-title">Questions fréquentes</h2>
+  <div class="faq">
+    <details open>
+      <summary>Samdé gère-t-il mon argent ?<svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></summary>
+      <p>Non. Samdé est un carnet : il note ce que vos clients vous doivent. Il ne reçoit, ne transfère et ne garde jamais d'argent. Les paiements se font toujours en dehors de l'application, comme aujourd'hui.</p>
+    </details>
+    <details>
+      <summary>Le rappel WhatsApp est-il envoyé automatiquement ?<svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></summary>
+      <p>Non. Samdé prépare un message poli ; c'est toujours vous qui appuyez sur envoyer dans WhatsApp.</p>
+    </details>
+    <details>
+      <summary>Samdé fonctionne-t-il sans internet ?<svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></summary>
+      <p>Oui. Votre carnet reste utilisable sans réseau. Une copie est sauvegardée dès que vous retrouvez une connexion.</p>
+    </details>
+    <details>
+      <summary>Comment supprimer mon compte ?<svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></summary>
+      <p>Dans l'application : Profil &gt; Supprimer mon compte. Vos données sont alors effacées de nos serveurs et de votre téléphone.</p>
+    </details>
+    <details>
+      <summary>Comment récupérer mes données sur un nouveau téléphone ?<svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></summary>
+      <p>Connectez-vous avec le même numéro et le même mot de passe : votre carnet est restauré depuis la dernière sauvegarde.</p>
+    </details>
+  </div>
+
+  <div class="links">
+    <a href="https://claude.ai/artifact/E6TgDzQPq19wZMSh5crbXJ" target="_blank" rel="noopener">
+      <span class="label">Politique de confidentialité</span>
+      <span class="go">Ouvrir →</span>
+    </a>
+    <a href="suppression-compte.html">
+      <span class="label">Supprimer mon compte</span>
+      <span class="go">Ouvrir →</span>
+    </a>
+  </div>
+
+  <footer>
+    <span>Samdé, le carnet de confiance. Une application <span class="by">par TRILL</span>.</span>
+  </footer>
+</main>
+
+<script>
+  (function () {
+    document.querySelectorAll('button[data-copy]').forEach(function (button) {
+      button.addEventListener('click', function () {
+        var text = button.getAttribute('data-copy');
+        var done = function () {
+          var original = button.textContent;
+          button.textContent = 'Copié';
+          setTimeout(function () { button.textContent = original; }, 1500);
+        };
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(text).then(done).catch(function () { selectFallback(button); });
+        } else {
+          selectFallback(button);
+        }
+      });
+    });
+    function selectFallback(button) {
+      var span = button.previousElementSibling;
+      if (!span) return;
+      var range = document.createRange();
+      range.selectNodeContents(span);
+      var selection = window.getSelection();
+      selection.removeAllRanges();
+      selection.addRange(range);
+    }
+  })();
+</script>

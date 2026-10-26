@@ -1,0 +1,347 @@
+<title>Confidentialité Samdé</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@700;800&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  /* Page layout : bandeau de marque, un seul texte de référence en colonne lisible (65ch), repères de section. */
+  :root {
+    --bg: #FFFFFF;
+    --surface: #F3F4F6;
+    --ink: #111318;
+    --muted: #5F6478;
+    --accent: #4F46E5;
+    --border: #EEF0F4;
+    color-scheme: light;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #11182B;
+      --surface: #182036;
+      --ink: #F2EFE6;
+      --muted: #AEB6D1;
+      --accent: #818CF8;
+      --border: #2B3453;
+      color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #11182B;
+    --surface: #182036;
+    --ink: #F2EFE6;
+    --muted: #AEB6D1;
+    --accent: #818CF8;
+    --border: #2B3453;
+    color-scheme: dark;
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Nunito', system-ui, -apple-system, sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    padding-inline: 20px;
+    padding-block: 32px 64px;
+  }
+  main {
+    max-width: 640px;
+    margin: 0 auto;
+  }
+
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 28px;
+  }
+  .brand svg { flex: none; }
+  .brand-name {
+    font-family: 'Baloo 2', Georgia, sans-serif;
+    font-weight: 800;
+    font-size: 22px;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+  }
+
+  h1 {
+    font-family: 'Baloo 2', Georgia, sans-serif;
+    font-weight: 700;
+    font-size: clamp(28px, 6vw, 36px);
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+    margin: 0 0 6px;
+    text-wrap: balance;
+  }
+  .updated {
+    font-size: 14px;
+    color: var(--muted);
+    margin: 0 0 20px;
+  }
+  .lede {
+    font-size: 17px;
+    color: var(--ink);
+    margin: 0 0 28px;
+  }
+
+  nav.toc {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 16px 20px;
+    margin-bottom: 36px;
+  }
+  nav.toc p {
+    margin: 0 0 10px;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+  }
+  nav.toc ol {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+    gap: 6px 16px;
+  }
+  nav.toc a {
+    color: var(--ink);
+    text-decoration: none;
+    font-size: 14px;
+    border-bottom: 1px solid transparent;
+  }
+  nav.toc a:hover { border-bottom-color: var(--accent); }
+
+  section {
+    padding-block: 28px;
+    border-top: 1px solid var(--border);
+    scroll-margin-top: 20px;
+  }
+  section:first-of-type { border-top: none; padding-top: 0; }
+
+  h2 {
+    font-family: 'Baloo 2', Georgia, sans-serif;
+    font-weight: 700;
+    font-size: 21px;
+    letter-spacing: -0.005em;
+    margin: 0 0 12px;
+    text-wrap: balance;
+  }
+  p { margin: 0 0 14px; }
+  p:last-child { margin-bottom: 0; }
+
+  ul {
+    margin: 0 0 14px;
+    padding-left: 22px;
+    display: grid;
+    gap: 10px;
+  }
+  ul:last-child { margin-bottom: 0; }
+  li { padding-left: 2px; }
+
+  .contact {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 14px 18px;
+    margin-top: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .contact span {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 600;
+    font-variant-numeric: normal;
+  }
+  .contact button {
+    font: inherit;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--accent);
+    background: transparent;
+    border: 1px solid var(--accent);
+    border-radius: 999px;
+    padding: 6px 14px;
+    cursor: pointer;
+  }
+  .contact button:hover { opacity: 0.85; }
+  .contact button:focus-visible, a:focus-visible, nav.toc a:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+
+  footer {
+    margin-top: 36px;
+    padding-top: 24px;
+    border-top: 1px solid var(--border);
+    font-size: 13px;
+    color: var(--muted);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  footer .mark { opacity: 0.8; }
+  footer .by { letter-spacing: 0.08em; }
+</style>
+
+<main>
+  <div class="brand">
+    <svg width="34" height="34" viewBox="0 0 100 100" role="img" aria-label="Samdé">
+      <rect width="100" height="100" rx="24" fill="#4F46E5"/>
+      <path transform="translate(4 10) scale(0.92)" d="M66 33 C64 22 38 21 38 36 C38 51 64 47 64 63 C64 78 36 78 34 66" fill="none" stroke="#FFFFFF" stroke-width="17" stroke-linecap="round" stroke-linejoin="round"/>
+      <rect x="66" y="14" width="7" height="20" rx="3.5" fill="#FFFFFF" transform="rotate(35 69.5 24)"/>
+    </svg>
+    <span class="brand-name">Samdé</span>
+  </div>
+
+  <h1>Politique de confidentialité</h1>
+  <p class="updated">Dernière mise à jour : 3 octobre 2026</p>
+  <p class="lede">Samdé est un carnet de crédit pour commerçants. Il contient des informations sensibles : les noms et numéros de vos clients, et ce qu'ils vous doivent. Cette page explique, simplement, ce que Samdé fait de ces informations.</p>
+
+  <nav class="toc" aria-label="Sommaire">
+    <p>Sur cette page</p>
+    <ol>
+      <li><a href="#responsable">Qui est responsable de Samdé</a></li>
+      <li><a href="#donnees-conservees">Les données conservées, et pourquoi</a></li>
+      <li><a href="#non-collecte">Ce que Samdé ne collecte pas</a></li>
+      <li><a href="#stockage">Où sont vos données</a></li>
+      <li><a href="#duree">Combien de temps</a></li>
+      <li><a href="#acces">Qui peut voir vos données</a></li>
+      <li><a href="#clients">Les données de vos clients</a></li>
+      <li><a href="#droits">Vos droits</a></li>
+      <li><a href="#securite">Sécurité</a></li>
+      <li><a href="#enfants">Enfants</a></li>
+      <li><a href="#changements">Changements</a></li>
+    </ol>
+  </nav>
+
+  <section id="responsable">
+    <h2>Qui est responsable de Samdé</h2>
+    <p>Samdé est édité par TRILL.</p>
+    <div class="contact">
+      <span id="email-responsable">abdoulazizsawadogo222@gmail.com</span>
+      <button type="button" data-copy="abdoulazizsawadogo222@gmail.com">Copier</button>
+    </div>
+  </section>
+
+  <section id="donnees-conservees">
+    <h2>Les données que Samdé conserve, et pourquoi</h2>
+    <p>Samdé ne garde que ce qui est nécessaire pour tenir votre carnet :</p>
+    <ul>
+      <li>Votre compte : votre numéro de téléphone (il sert d'identifiant pour vous connecter) et votre mot de passe. Le mot de passe n'est jamais lisible, ni par nous ni par personne : il est conservé sous forme transformée par notre hébergeur d'authentification.</li>
+      <li>Votre commerce : le nom du commerce, votre nom, votre numéro si vous le renseignez, et le message de rappel que vous avez choisi. Pourquoi : personnaliser votre carnet et vos rappels.</li>
+      <li>Votre carnet : vos clients (nom, numéro de téléphone, note), leurs crédits et leurs paiements (montant en FCFA, date, note) et la trace des rappels que vous avez ouverts (date, canal, montant, texte du message). Pourquoi : c'est le service lui-même, calculer ce que chaque client vous doit et le retrouver sur un autre téléphone.</li>
+      <li>Sur votre téléphone uniquement : le code de verrouillage (conservé sous forme transformée, jamais en clair) et votre connexion.</li>
+      <li>Si le suivi des plantages est activé dans votre version de Samdé : des rapports techniques anonymes (type d'erreur, version de l'application, modèle de téléphone et version du système). Ils ne contiennent ni nom, ni numéro, ni montant. Pourquoi : corriger les bugs.</li>
+    </ul>
+  </section>
+
+  <section id="non-collecte">
+    <h2>Ce que Samdé ne collecte pas</h2>
+    <ul>
+      <li>Pas de publicité, pas de traceur, pas de statistiques sur ce que vous faites dans l'application.</li>
+      <li>Pas de position, pas de photos, pas de micro, pas de caméra.</li>
+      <li>Pas de lecture de vos contacts en arrière-plan : si vous choisissez d'importer un contact pour créer un client, seul le contact que vous sélectionnez est utilisé, et l'autorisation n'est demandée qu'à ce moment-là.</li>
+      <li>Pas de messages : Samdé n'envoie ni WhatsApp ni SMS à votre place.</li>
+    </ul>
+  </section>
+
+  <section id="stockage">
+    <h2>Où sont vos données</h2>
+    <p>Votre carnet est d'abord sur votre téléphone : Samdé fonctionne sans internet. Dès qu'il y a du réseau, une copie est envoyée sur nos serveurs, hébergés chez notre hébergeur de base de données, Supabase. Cette copie permet de retrouver votre carnet si vous changez de téléphone.</p>
+    <p>Les échanges entre l'application et les serveurs sont protégés (HTTPS). Chaque commerçant ne peut lire et modifier que ses propres données : c'est imposé par la base de données elle-même.</p>
+    <p>Sur le téléphone, le carnet est protégé par les protections du système (chaque application est isolée des autres) et par le verrouillage de votre téléphone. Samdé ne chiffre pas lui-même la base du carnet : si quelqu'un déverrouille votre téléphone, ou si votre téléphone est modifié de façon à contourner ses protections, ces données peuvent être lues. C'est pourquoi Samdé propose en plus son propre code de verrouillage.</p>
+  </section>
+
+  <section id="duree">
+    <h2>Combien de temps</h2>
+    <p>Vos données sont gardées tant que votre compte existe. Si vous supprimez votre compte, elles sont effacées de nos serveurs et de votre téléphone. Les copies de sauvegarde de notre hébergeur peuvent subsister temporairement après la suppression.</p>
+  </section>
+
+  <section id="acces">
+    <h2>Qui peut voir vos données</h2>
+    <p>Samdé ne vend pas vos données et ne les partage pas à des fins de publicité.</p>
+    <ul>
+      <li>Vous. Personne d'autre, dans l'application.</li>
+      <li>Notre hébergeur, Supabase, qui fait fonctionner la base de données pour notre compte.</li>
+      <li>L'équipe de Samdé n'a pas besoin de lire votre carnet pour faire fonctionner le service.</li>
+      <li>WhatsApp ou votre application SMS, quand vous décidez d'envoyer un rappel : Samdé prépare le message, c'est vous qui appuyez sur « envoyer ». Ces services appliquent alors leurs propres règles.</li>
+    </ul>
+  </section>
+
+  <section id="clients">
+    <h2>Les données de vos clients</h2>
+    <p>Les noms, numéros et montants de vos clients vous appartiennent : vous restez responsable de ces informations, et de leur bon usage. Samdé n'est que l'outil qui les conserve pour vous.</p>
+    <p>Informez vos clients que vous notez leur crédit dans un carnet, et n'utilisez leurs numéros que pour la relation commerciale (par exemple un rappel poli). À leur demande, corrigez ou supprimez leurs informations.</p>
+  </section>
+
+  <section id="droits">
+    <h2>Vos droits, et comment les exercer</h2>
+    <ul>
+      <li>Voir et récupérer vos données : Profil &gt; Exporter mes données (fichiers CSV et JSON).</li>
+      <li>Corriger : modifiez la fiche d'un client. Pour une erreur dans un crédit ou un paiement, on ne modifie pas la ligne : on l'annule, et l'historique reste honnête.</li>
+      <li>Supprimer : Profil &gt; Supprimer mon compte. Tout est effacé, sur nos serveurs comme sur votre téléphone.</li>
+      <li>Toute autre demande (accès, opposition, réclamation) : écrivez-nous.</li>
+    </ul>
+    <div class="contact">
+      <span>abdoulazizsawadogo222@gmail.com</span>
+      <button type="button" data-copy="abdoulazizsawadogo222@gmail.com">Copier</button>
+    </div>
+  </section>
+
+  <section id="securite">
+    <h2>Sécurité</h2>
+    <p>Vous pouvez protéger l'ouverture de Samdé par un code à 4 ou 6 chiffres, avec l'empreinte ou le visage si votre téléphone le permet. Le code n'est jamais conservé en clair. Choisissez un mot de passe que vous n'utilisez pas ailleurs, et ne le partagez pas.</p>
+  </section>
+
+  <section id="enfants">
+    <h2>Enfants</h2>
+    <p>Samdé est destiné aux commerçants adultes. Il n'est pas conçu pour les enfants.</p>
+  </section>
+
+  <section id="changements">
+    <h2>Changements</h2>
+    <p>Si cette politique change de façon importante, nous vous le dirons dans l'application avant qu'elle s'applique. La date en haut de cette page indique la dernière mise à jour.</p>
+  </section>
+
+  <footer>
+    <span class="mark">◆</span>
+    <span>Samdé, le carnet de confiance. Une application <span class="by">par TRILL</span>.</span>
+  </footer>
+</main>
+
+<script>
+  (function () {
+    document.querySelectorAll('button[data-copy]').forEach(function (button) {
+      button.addEventListener('click', function () {
+        var text = button.getAttribute('data-copy');
+        var done = function () {
+          var original = button.textContent;
+          button.textContent = 'Copié';
+          setTimeout(function () { button.textContent = original; }, 1500);
+        };
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(text).then(done).catch(function () { selectFallback(button); });
+        } else {
+          selectFallback(button);
+        }
+      });
+    });
+    function selectFallback(button) {
+      var span = button.previousElementSibling;
+      if (!span) return;
+      var range = document.createRange();
+      range.selectNodeContents(span);
+      var selection = window.getSelection();
+      selection.removeAllRanges();
+      selection.addRange(range);
+    }
+  })();
+</script>
